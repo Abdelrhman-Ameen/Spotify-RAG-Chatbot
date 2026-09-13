@@ -1,0 +1,20 @@
+# Environments
+.env
+
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Vector database (should not be tracked as it can be large and rebuilt)
+chroma_db/
+
+# Scratch/Utility scripts (Exclude if not part of main project)
+fix.py
+generate_notebooks.py
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore large model files (>100MB)
+models/sentiment_model/

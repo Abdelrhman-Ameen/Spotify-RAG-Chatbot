@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+joblib
+torch
+transformers
+chromadb
+sentence-transformers
+python-dotenv
+groq
