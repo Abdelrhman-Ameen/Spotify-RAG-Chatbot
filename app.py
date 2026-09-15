@@ -65,6 +65,8 @@ async def health() -> dict:
         "retrieval_backend": assistant.retriever.backend_name,
         "llm_backend": assistant.generator.backend_name,
         "llm_ready": assistant.generator.ready,
+        "sentiment_backend": assistant.sentiment_classifier.backend_name,
+        "sentiment_ready": assistant.sentiment_classifier.ready,
     }
 
 

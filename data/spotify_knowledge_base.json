@@ -184,6 +184,30 @@
       "source_url": "https://support.spotify.com/us/article/audiobooks-premium-plans/"
     },
     {
+      "id": "subscribe-premium", "category": "premium_plans", "title": "Subscribe to Spotify Premium",
+      "questions": ["How do I subscribe?", "How can I get Spotify Premium?", "Where do I sign up for Premium?", "I want to buy a Spotify subscription"],
+      "answer": "Go to spotify.com/premium, choose an available Premium plan, sign in or create a Spotify account, and follow the checkout steps for a supported payment method. Available plans, prices, trials and payment methods depend on your country or region. If Premium is billed through a partner, manage it through that provider.",
+      "source_url": "https://support.spotify.com/us/category/premium-plans/"
+    },
+    {
+      "id": "what-is-spotify", "category": "getting_started", "title": "What Spotify is",
+      "questions": ["What is Spotify?", "What can I do with Spotify?", "Tell me basic information about Spotify"],
+      "answer": "Spotify is a digital service for music, podcasts and audiobooks. You can search for content, follow creators, build a library, make and share playlists, and listen across supported phones, computers, speakers, TVs, cars and other devices. Features vary by plan, device and market.",
+      "source_url": "https://support.spotify.com/us/article/what-is-spotify/"
+    },
+    {
+      "id": "create-account", "category": "account_management", "title": "Create a Spotify account",
+      "questions": ["How do I create a Spotify account?", "How do I sign up?", "Can I join Spotify for free?"],
+      "answer": "Open spotify.com/signup or the Spotify app, then register with an available method such as email, phone, Google or Apple. Spotify Free does not require a paid subscription. After creating the account, you can choose Premium separately if you want paid features.",
+      "source_url": "https://support.spotify.com/us/article/getting-started/"
+    },
+    {
+      "id": "search-on-spotify", "category": "getting_started", "title": "Search for music, podcasts and audiobooks",
+      "questions": ["How do I search on Spotify?", "How can I find a song?", "Where can I find podcasts?"],
+      "answer": "Open Search in the Spotify app and enter an artist, song, album, playlist, podcast, show, episode or audiobook. You can browse categories and filter results where available. If content is missing, its availability may depend on the rights holder and your market.",
+      "source_url": "https://support.spotify.com/us/article/search/"
+    },
+    {
       "id": "contact-support", "category": "support", "title": "Contact Spotify Support",
       "questions": ["How do I contact Spotify?", "What is Spotify's phone number?", "Can I talk to a person?"],
       "answer": "Spotify does not currently offer phone support. Use the official Contact us page to message a customer service expert, or search and post in the Spotify Community. Separate help centers are available for artists, creators and authors.",

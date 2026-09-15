@@ -17,6 +17,8 @@ class Settings:
     local_llm_model: str
     ollama_model: str
     ollama_url: str
+    sentiment_backend: str
+    sentiment_model: str
     relevance_threshold: float
 
     @classmethod
@@ -41,5 +43,10 @@ class Settings:
             local_llm_model=os.getenv("LOCAL_LLM_MODEL", "google/flan-t5-small"),
             ollama_model=os.getenv("OLLAMA_MODEL", "qwen2.5:3b"),
             ollama_url=os.getenv("OLLAMA_URL", "http://localhost:11434"),
+            sentiment_backend=os.getenv("SENTIMENT_BACKEND", "transformers").lower(),
+            sentiment_model=os.getenv(
+                "SENTIMENT_MODEL",
+                "cardiffnlp/twitter-roberta-base-sentiment-latest",
+            ),
             relevance_threshold=float(os.getenv("RAG_RELEVANCE_THRESHOLD", "0.20")),
         )

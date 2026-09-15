@@ -1,3 +1,4 @@
+from dataclasses import replace
 from pathlib import Path
 
 from spotify_rag.assistant import SpotifyAssistant
@@ -11,7 +12,8 @@ def settings() -> Settings:
         chroma_path=base / "tests" / ".chroma", collection_name="test",
         embedding_model="unused", retrieval_backend="tfidf", llm_backend="extractive",
         local_llm_model="unused", ollama_model="unused",
-        ollama_url="http://localhost:11434", relevance_threshold=0.05,
+        ollama_url="http://localhost:11434", sentiment_backend="heuristic",
+        sentiment_model="unused", relevance_threshold=0.05,
     )
 
 
@@ -47,3 +49,20 @@ def test_small_talk_skips_retrieval():
     result = build_assistant().chat("Hello")
     assert result["intent"] == "greeting"
     assert result["sources"] == []
+
+
+def test_positive_opinion_uses_conversation_route():
+    result = build_assistant().chat("I love Spotify")
+    assert result["intent"] == "opinion"
+    assert result["sentiment"] == "positive"
+    assert "glad" in result["response"].lower()
+    assert result["sources"] == []
+
+
+def test_subscribe_question_returns_basic_support_answer():
+    assistant = SpotifyAssistant(replace(settings(), relevance_threshold=0.20))
+    assistant.initialize()
+    result = assistant.chat("Can you tell me how to subscribe?")
+    assert result["grounded"] is True
+    assert "Premium" in result["response"]
+    assert result["sources"]

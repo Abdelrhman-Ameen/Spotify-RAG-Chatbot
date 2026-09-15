@@ -2,6 +2,7 @@ import os
 
 os.environ["RAG_RETRIEVAL_BACKEND"] = "tfidf"
 os.environ["LLM_BACKEND"] = "extractive"
+os.environ["SENTIMENT_BACKEND"] = "heuristic"
 os.environ["RAG_RELEVANCE_THRESHOLD"] = "0.05"
 
 from fastapi.testclient import TestClient
