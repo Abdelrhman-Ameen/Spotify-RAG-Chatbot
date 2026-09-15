@@ -1,0 +1,193 @@
+{
+  "name": "Spotify Support Knowledge Base",
+  "last_reviewed": "2026-09-16",
+  "disclaimer": "Educational project. Spotify is a trademark of Spotify AB. This project is not affiliated with Spotify.",
+  "entries": [
+    {
+      "id": "premium-benefits", "category": "premium_plans", "title": "Spotify Premium benefits",
+      "questions": ["What do I get with Premium?", "Is Premium ad free?", "Can Premium download music?"],
+      "answer": "Spotify Premium includes ad-free music, offline music downloads, on-demand playback and high audio quality. Eligible Premium users can download up to 10,000 tracks on each of up to 5 devices. Feature and audiobook availability can vary by plan and market.",
+      "source_url": "https://support.spotify.com/us/article/your-premium-benefits/"
+    },
+    {
+      "id": "cancel-premium", "category": "premium_plans", "title": "Cancel a Premium plan",
+      "questions": ["How do I cancel Spotify Premium?", "Will I lose my playlists after canceling?"],
+      "answer": "Open your Spotify account page, go to Manage your plan, and select Cancel subscription. Premium remains active until the next billing date, then the account changes to Spotify Free. Your playlists and saved music remain. If a partner company manages the plan, cancel through that partner.",
+      "source_url": "https://support.spotify.com/us/article/cancel-premium/"
+    },
+    {
+      "id": "family-plan", "category": "premium_plans", "title": "Premium Family",
+      "questions": ["How does Spotify Family work?", "How many people can join Family?", "Do members share an account?"],
+      "answer": "Premium Family covers up to 6 family members who live together, including the manager. Each person uses a separate Spotify account. The manager pays and can add or remove members. Joining members must enter the same home address as the manager.",
+      "source_url": "https://support.spotify.com/us/article/family-plan/"
+    },
+    {
+      "id": "duo-plan", "category": "premium_plans", "title": "Premium Duo",
+      "questions": ["What is Spotify Duo?", "Who can join Duo?"],
+      "answer": "Premium Duo is for two people who live together. Each member keeps an individual account, saved music and recommendations. The plan manager pays and invites the other eligible household member.",
+      "source_url": "https://support.spotify.com/us/article/duo-plan/"
+    },
+    {
+      "id": "student-plan", "category": "premium_plans", "title": "Premium Student eligibility",
+      "questions": ["How do I get the Spotify student discount?", "How long does Student last?"],
+      "answer": "Eligible college or university students can receive Premium Student for up to 4 years. Eligibility is verified by SheerID and must be renewed every 12 months. Available payment methods and bundled benefits depend on location.",
+      "source_url": "https://support.spotify.com/us/article/premium-student/"
+    },
+    {
+      "id": "basic-plans", "category": "premium_plans", "title": "Spotify Basic plans",
+      "questions": ["What is Spotify Basic?", "Does Basic include audiobooks?"],
+      "answer": "Basic plans are monthly plans offered to eligible existing Premium subscribers. They include core music benefits such as ad-free listening and offline downloads but do not include monthly audiobook listening time. If canceled, a Basic plan may not be available again.",
+      "source_url": "https://support.spotify.com/us/article/spotify-basic/"
+    },
+    {
+      "id": "offline-listening", "category": "playback", "title": "Listen offline",
+      "questions": ["How do I listen offline?", "Why did my downloads disappear?", "How many songs can I download?"],
+      "answer": "Premium users can download albums, playlists and podcasts; Spotify Free users can download podcasts. You can download up to 10,000 tracks on each of up to 5 devices. Go online at least once every 30 days to keep downloads. Reinstalling the app removes downloaded content from that device.",
+      "source_url": "https://support.spotify.com/us/article/listen-offline/"
+    },
+    {
+      "id": "audio-quality", "category": "playback", "title": "Audio quality settings",
+      "questions": ["How do I change audio quality?", "What quality does Spotify use?", "How do I save data?"],
+      "answer": "Change quality under Settings and privacy, then Audio Quality or Media Quality. Higher streaming quality uses more data and higher download quality uses more storage. The web player uses AAC 128 kbit/s on Free and AAC 256 kbit/s on Premium; app options depend on plan and device.",
+      "source_url": "https://support.spotify.com/us/article/audio-quality/"
+    },
+    {
+      "id": "lossless", "category": "playback", "title": "Lossless audio",
+      "questions": ["Does Spotify support lossless?", "How do I enable lossless?", "Can Bluetooth play lossless?"],
+      "answer": "Eligible Premium users can select Lossless under Media Quality for Wi-Fi, cellular streaming or downloads, with supported content up to 24-bit/44.1 kHz FLAC. Device compatibility, connection method and network quality affect playback; Bluetooth may not preserve lossless quality.",
+      "source_url": "https://support.spotify.com/us/article/lossless-audio-quality/"
+    },
+    {
+      "id": "spotify-offline-error", "category": "troubleshooting", "title": "Spotify says it is offline",
+      "questions": ["Why does Spotify say offline?", "Spotify has no internet"],
+      "answer": "Check whether Offline mode is enabled, then test other apps or web pages. Restart Wi-Fi or the router, try another network, confirm mobile data allowance, and check firewall settings. If the problem continues, update or reinstall Spotify.",
+      "source_url": "https://support.spotify.com/us/article/spotify-is-offline/"
+    },
+    {
+      "id": "spotify-not-playing", "category": "troubleshooting", "title": "Spotify is not playing",
+      "questions": ["Spotify will not play", "Music keeps stopping", "No songs play"],
+      "answer": "Restart the Spotify app, update it, confirm a stable internet connection, close other apps, and verify the device has enough storage. If needed, sign out and back in or reinstall the app. Reinstalling means downloaded content must be downloaded again.",
+      "source_url": "https://support.spotify.com/us/article/spotify-not-playing/"
+    },
+    {
+      "id": "no-sound", "category": "troubleshooting", "title": "No sound on Spotify",
+      "questions": ["Why is there no sound?", "Spotify is playing but silent"],
+      "answer": "Check Spotify and device volume, confirm the correct audio output, and make sure media is not paused on another connected device. Restart the app and device. For Bluetooth or Spotify Connect, disconnect and reconnect the target device.",
+      "source_url": "https://support.spotify.com/us/article/cant-hear-spotify/"
+    },
+    {
+      "id": "storage", "category": "troubleshooting", "title": "Spotify storage and cache",
+      "questions": ["How do I clear Spotify cache?", "Where are downloads stored?", "Spotify uses too much storage"],
+      "answer": "Spotify uses storage for cached media and offline downloads and recommends at least 1 GB free. On mobile, go to Settings and privacy, Data-saving and offline, then Storage to clear cache or remove downloads. Android can use an available SD card; desktop users can clear or relocate cache in Settings.",
+      "source_url": "https://support.spotify.com/us/article/storage-information/"
+    },
+    {
+      "id": "data-saver", "category": "playback", "title": "Reduce mobile data usage",
+      "questions": ["How can Spotify use less data?", "What is Data Saver?"],
+      "answer": "In the mobile app, open Settings and privacy, then Data-saving and offline, and enable Data Saver. You can also lower media quality, disable downloads over cellular, use audio-only video podcasts, turn off Autoplay and use Wi-Fi when possible.",
+      "source_url": "https://support.spotify.com/us/article/internet-and-data-usage/"
+    },
+    {
+      "id": "cannot-login", "category": "account_management", "title": "Cannot log in",
+      "questions": ["I forgot my Spotify login", "I forgot my email", "I cannot sign in"],
+      "answer": "Use Spotify password reset. If you do not remember the account email or username, try possible email addresses; reset email is sent only for a registered address. Also try the login method used at signup, such as phone number, Apple or Google.",
+      "source_url": "https://support.spotify.com/us/article/cannot-remember-login/"
+    },
+    {
+      "id": "reset-password", "category": "account_management", "title": "Reset or change a password",
+      "questions": ["How do I reset my password?", "How do I change Spotify password?"],
+      "answer": "Use Spotify's password reset page and enter the email address or username linked to the account. Follow the email link to choose a new password. If the account uses an external login provider, review that provider's login method as well.",
+      "source_url": "https://support.spotify.com/us/article/reset-password/"
+    },
+    {
+      "id": "account-hacked", "category": "account_security", "title": "Protect a compromised account",
+      "questions": ["My Spotify account was hacked", "Someone changed my music", "How do I sign out everywhere?"],
+      "answer": "Change to a strong unique password, then use Sign out everywhere under Security and privacy on your account page. Remove access for unknown third-party apps. Partner devices such as speakers, consoles and TVs may require removing access separately from the apps page.",
+      "source_url": "https://support.spotify.com/us/article/protect-your-account/"
+    },
+    {
+      "id": "delete-account", "category": "account_management", "title": "Close an account and delete data",
+      "questions": ["How do I delete my Spotify account?", "Can I close my account?"],
+      "answer": "Use the Close account and delete data flow in Spotify Support while signed in. Premium subscribers generally need to cancel Premium first. Closing an account removes access to playlists and saved content, so review the on-screen consequences before confirming.",
+      "source_url": "https://support.spotify.com/us/article/close-account/"
+    },
+    {
+      "id": "failed-payment", "category": "billing", "title": "Failed Premium payment",
+      "questions": ["Why did my payment fail?", "Spotify cannot charge my card"],
+      "answer": "Confirm that the payment method has sufficient funds, is enabled for online and recurring purchases, and is registered in the same country as the Spotify account. Retry in a private browser window or use another supported payment method. Banks or payment providers may need to authorize the charge.",
+      "source_url": "https://support.spotify.com/us/article/failed-payment/"
+    },
+    {
+      "id": "unknown-charge", "category": "billing", "title": "Charged but do not use Premium",
+      "questions": ["Why did Spotify charge me?", "I do not recognize a Spotify charge"],
+      "answer": "Check whether Premium is active on another Spotify account by trying other login details or password reset with your email addresses. Also ask family members and check whether a partner provider bills the plan. If the charge remains unknown, contact Spotify Support through the official contact page.",
+      "source_url": "https://support.spotify.com/us/article/charged-dont-use-premium/"
+    },
+    {
+      "id": "payment-details", "category": "billing", "title": "Change payment details",
+      "questions": ["How do I update my card?", "Change Spotify payment method"],
+      "answer": "Sign in to the Spotify account page, open Manage your plan, and update the payment method. Changes normally apply from the next billing date. If a partner such as a phone or internet provider manages the subscription, update payment through that partner.",
+      "source_url": "https://support.spotify.com/us/article/change-payment-details/"
+    },
+    {
+      "id": "playlist-privacy", "category": "privacy", "title": "Playlist privacy and profile visibility",
+      "questions": ["How do I make a playlist private?", "Can others see my playlist?"],
+      "answer": "Open the playlist menu and select Make private. A private playlist cannot be accessed by others, even with a link. Public playlists can be shown on your profile; profile publishing controls are available under Privacy and social settings.",
+      "source_url": "https://support.spotify.com/us/article/playlist-privacy-and-access/"
+    },
+    {
+      "id": "recover-playlist", "category": "playlists", "title": "Recover a deleted playlist",
+      "questions": ["I deleted a playlist", "How can I restore a playlist?"],
+      "answer": "Sign in to your Spotify account page and open Recover playlists. Select Restore beside the deleted playlist, then open Spotify and find it at the bottom of your playlist collection. Recently deleted playlists are recoverable for a limited period shown by Spotify.",
+      "source_url": "https://support.spotify.com/us/article/save-recover-playlists/"
+    },
+    {
+      "id": "collaborative-playlist", "category": "playlists", "title": "Collaborative playlists",
+      "questions": ["How do I make a collaborative playlist?", "Can friends add songs?"],
+      "answer": "From a playlist you created, use the invite collaborator option and share the generated link. Invited collaborators can add, remove and reorder tracks. Manage access from the playlist menu and remove collaborators you no longer want to participate.",
+      "source_url": "https://support.spotify.com/us/article/collaborative-playlists/"
+    },
+    {
+      "id": "spotify-connect", "category": "devices", "title": "Spotify Connect",
+      "questions": ["How do I play Spotify on a speaker?", "What is Spotify Connect?", "How do I change devices?"],
+      "answer": "Spotify Connect lets one device control playback on another compatible device. Put both devices on the same Wi-Fi when setting up, start playing content, select the device icon, and choose the target device. Update both devices and restart them if the target does not appear.",
+      "source_url": "https://support.spotify.com/us/article/spotify-connect/"
+    },
+    {
+      "id": "private-listening", "category": "privacy", "title": "Private listening",
+      "questions": ["How do I start a private session?", "Can followers see what I play?"],
+      "answer": "Use the Privacy and social settings in the Spotify app to start a Private Session. A private session limits sharing of listening activity and ends automatically after a period of inactivity or when the app restarts, so enable it again when needed.",
+      "source_url": "https://support.spotify.com/us/article/private-listening/"
+    },
+    {
+      "id": "privacy-data", "category": "privacy", "title": "Personal data and privacy controls",
+      "questions": ["What data does Spotify collect?", "How do I request my Spotify data?", "How do I change privacy choices?"],
+      "answer": "Spotify processes account, usage, technical, payment and support data to provide and secure the service, personalize features, process payments and meet legal obligations. Available access, deletion, correction and advertising controls are described in the Privacy Policy and Safety and Privacy Center.",
+      "source_url": "https://www.spotify.com/us/legal/privacy-policy/"
+    },
+    {
+      "id": "podcasts", "category": "creators", "title": "Podcasts and Spotify for Creators",
+      "questions": ["How do I publish a podcast?", "Where can podcast creators get help?"],
+      "answer": "Podcast and show owners should use Spotify for Creators to manage distribution, episodes, analytics and creator support. Listener podcast controls and subscriptions are available in the Spotify app, while creator-specific issues belong in the Spotify for Creators help center.",
+      "source_url": "https://support.spotify.com/us/creators/"
+    },
+    {
+      "id": "artists", "category": "creators", "title": "Spotify for Artists",
+      "questions": ["How do artists manage Spotify profiles?", "How do I upload music to Spotify?"],
+      "answer": "Artists and their teams use Spotify for Artists to claim profiles, manage images and biographies, pitch music and view audience analytics. Music is delivered to Spotify through a distributor; Spotify for Artists does not directly upload audio releases.",
+      "source_url": "https://artists.spotify.com/help/"
+    },
+    {
+      "id": "audiobooks", "category": "audiobooks", "title": "Audiobooks and listening hours",
+      "questions": ["Does Premium include audiobooks?", "Who gets audiobook hours?", "Can I buy more audiobook time?"],
+      "answer": "Audiobook access, included monthly listening time and top-ups depend on plan and market. For Family and Duo, included listening time is generally assigned to the plan manager; eligible members may use an Audiobooks+ add-on or purchased time where offered. Check the account plan page for current eligibility.",
+      "source_url": "https://support.spotify.com/us/article/audiobooks-premium-plans/"
+    },
+    {
+      "id": "contact-support", "category": "support", "title": "Contact Spotify Support",
+      "questions": ["How do I contact Spotify?", "What is Spotify's phone number?", "Can I talk to a person?"],
+      "answer": "Spotify does not currently offer phone support. Use the official Contact us page to message a customer service expert, or search and post in the Spotify Community. Separate help centers are available for artists, creators and authors.",
+      "source_url": "https://support.spotify.com/us/article/contact-us/"
+    }
+  ]
+}

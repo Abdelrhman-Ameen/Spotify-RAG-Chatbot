@@ -1,314 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Customer Support</title>
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --chat-bg: #1e293b;
-            --text-color: #f8fafc;
-            --accent-color: #3b82f6;
-            --accent-hover: #2563eb;
-            --bot-msg-bg: #334155;
-            --user-msg-bg: #3b82f6;
-            --border-color: #334155;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .chat-container {
-            width: 100%;
-            max-width: 500px;
-            height: 85vh;
-            background-color: var(--chat-bg);
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .chat-header {
-            padding: 20px;
-            background-color: rgba(30, 41, 59, 0.95);
-            border-bottom: 1px solid var(--border-color);
-            text-align: center;
-            backdrop-filter: blur(10px);
-            z-index: 10;
-        }
-
-        .chat-header h2 {
-            margin: 0;
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-        .chat-header p {
-            margin: 4px 0 0;
-            font-size: 0.85rem;
-            color: #94a3b8;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            scroll-behavior: smooth;
-        }
-
-        .message {
-            max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            animation: fadeIn 0.3s ease-out;
-            word-wrap: break-word;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .user-message {
-            background-color: var(--user-msg-bg);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-        }
-
-        .bot-message {
-            background-color: var(--bot-msg-bg);
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
-
-        .escalated-badge {
-            display: inline-block;
-            background-color: #ef4444;
-            color: white;
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-bottom: 4px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .debug-info {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-top: 6px;
-            display: block;
-        }
-
-        .chat-input-container {
-            padding: 20px;
-            background-color: var(--chat-bg);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 12px;
-        }
-
-        .chat-input {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: 24px;
-            border: 1px solid var(--border-color);
-            background-color: #0f172a;
-            color: var(--text-color);
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .chat-input:focus {
-            border-color: var(--accent-color);
-        }
-
-        .send-btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
-        }
-
-        .send-btn:hover {
-            background-color: var(--accent-hover);
-        }
-        
-        .send-btn:active {
-            transform: scale(0.95);
-        }
-
-        .typing-indicator {
-            display: none;
-            align-self: flex-start;
-            background-color: var(--bot-msg-bg);
-            padding: 12px 16px;
-            border-radius: 12px;
-            border-bottom-left-radius: 4px;
-        }
-
-        .typing-dots {
-            display: flex;
-            gap: 4px;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            background-color: #94a3b8;
-            border-radius: 50%;
-            animation: typing 1.4s infinite ease-in-out both;
-        }
-
-        .dot:nth-child(1) { animation-delay: -0.32s; }
-        .dot:nth-child(2) { animation-delay: -0.16s; }
-
-        @keyframes typing {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
-    </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A source-grounded Spotify support assistant powered by open-source AI.">
+  <title>Spotify Support Assistant</title>
+  <style>
+    :root{--ink:#f7f7f2;--muted:#a5a8a6;--night:#080a09;--panel:#111412;--panel2:#191d1a;--line:#2b302d;--green:#1ed760;--warning:#ffb86b;--radius:22px}*{box-sizing:border-box}html,body{height:100%}body{margin:0;color:var(--ink);background:radial-gradient(circle at 12% 2%,rgba(30,215,96,.16),transparent 27rem),var(--night);font-family:Inter,"Segoe UI",Arial,sans-serif;overflow:hidden}button,textarea{font:inherit}button{color:inherit}.shell{width:min(1400px,100%);height:100%;margin:0 auto;padding:20px;display:grid;grid-template-columns:330px 1fr;gap:18px}.sidebar,.chat{border:1px solid var(--line);background:rgba(17,20,18,.92);box-shadow:0 24px 80px rgba(0,0,0,.34)}.sidebar{border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;min-height:0}.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:42px;height:42px;border-radius:50%;background:var(--green);display:grid;place-items:center;flex:0 0 auto}.brand-mark svg{width:25px;color:#071b0e}.brand-name{font-weight:800;letter-spacing:-.03em;font-size:1.05rem}.eyebrow{color:var(--green);font:700 .69rem/1.2 "Segoe UI",sans-serif;letter-spacing:.14em;text-transform:uppercase}h1{font-size:clamp(2rem,4vw,4.2rem);line-height:.94;letter-spacing:-.065em;margin:40px 0 18px;max-width:10ch}.intro{margin:0;color:var(--muted);line-height:1.6;font-size:.94rem}.signal{height:78px;display:flex;align-items:center;gap:5px;margin:30px 0;border-block:1px solid var(--line);padding-inline:4px}.signal span{width:5px;border-radius:9px;background:var(--green);opacity:.8;animation:pulse 1.8s ease-in-out infinite}.signal span:nth-child(1),.signal span:nth-child(9){height:14px}.signal span:nth-child(2),.signal span:nth-child(8){height:28px;animation-delay:-.2s}.signal span:nth-child(3),.signal span:nth-child(7){height:46px;animation-delay:-.4s}.signal span:nth-child(4),.signal span:nth-child(6){height:31px;animation-delay:-.6s}.signal span:nth-child(5){height:58px;animation-delay:-.8s}@keyframes pulse{50%{transform:scaleY(.55);opacity:.45}}.suggestions{display:grid;gap:9px;margin-top:auto}.suggestion{text-align:left;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:transparent;cursor:pointer;color:#d8dcd9;transition:.18s ease}.suggestion:hover{border-color:var(--green);background:rgba(30,215,96,.07);transform:translateX(3px)}.disclaimer{color:#727773;font-size:.69rem;line-height:1.45;margin:20px 0 0}.chat{border-radius:var(--radius);display:grid;grid-template-rows:auto 1fr auto;min-width:0;overflow:hidden}.chat-head{padding:19px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px}.chat-title{font-weight:750;letter-spacing:-.02em}.status{color:var(--muted);display:flex;align-items:center;gap:8px;font-size:.78rem}.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(30,215,96,.1)}.messages{padding:28px clamp(18px,4vw,56px);overflow-y:auto;display:flex;flex-direction:column;gap:22px;scroll-behavior:smooth}.message{width:min(720px,92%);animation:rise .24s ease-out}@keyframes rise{from{opacity:0;transform:translateY(8px)}}.message.user{align-self:flex-end;width:auto;max-width:76%}.bubble{padding:15px 17px;line-height:1.56;font-size:.96rem;white-space:pre-wrap}.bot .bubble{background:var(--panel2);border:1px solid var(--line);border-radius:4px 18px 18px 18px}.user .bubble{background:var(--green);color:#06160c;font-weight:600;border-radius:18px 18px 4px 18px}.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.tag{color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:.68rem}.tag.escalated{color:var(--warning);border-color:rgba(255,184,107,.35)}.sources{margin-top:12px;padding:12px 14px;background:#0c0f0d;border-left:2px solid var(--green);border-radius:0 10px 10px 0}.sources-label{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-size:.65rem;margin-bottom:7px}.sources a{display:block;color:#b9f7cd;text-decoration:none;font-size:.79rem;margin-top:5px}.sources a:hover{text-decoration:underline}.composer-wrap{border-top:1px solid var(--line);padding:16px clamp(16px,3vw,36px) 18px;background:#0e110f}.composer{display:grid;grid-template-columns:1fr auto;align-items:end;gap:10px;border:1px solid #343a36;background:#171a18;border-radius:18px;padding:8px}.composer:focus-within{border-color:var(--green);box-shadow:0 0 0 3px rgba(30,215,96,.1)}textarea{resize:none;min-height:44px;max-height:130px;border:0;outline:0;color:var(--ink);background:transparent;padding:11px 12px;line-height:1.4}textarea::placeholder{color:#7f8581}.send{width:44px;height:44px;border:0;border-radius:13px;background:var(--green);color:#041208;cursor:pointer;display:grid;place-items:center;transition:.18s}.send:hover{background:#35ed75;transform:translateY(-1px)}.send:disabled{opacity:.45;cursor:wait;transform:none}.send svg{width:19px}.hint{color:#717672;font-size:.68rem;text-align:center;margin-top:8px}.typing .bubble{display:flex;gap:5px;width:61px}.typing i{width:7px;height:7px;background:var(--muted);border-radius:50%;animation:dots 1s infinite alternate}.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}@keyframes dots{to{transform:translateY(-5px);background:var(--green)}}:focus-visible{outline:2px solid var(--green);outline-offset:3px}@media(max-width:800px){body{overflow:auto}.shell{display:block;padding:0;height:100dvh}.sidebar{display:none}.chat{height:100dvh;border:0;border-radius:0}.messages{padding-block:22px}.message.user{max-width:88%}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+  </style>
 </head>
 <body>
-
-    <div class="chat-container">
-        <div class="chat-header">
-            <h2>Support Chatbot</h2>
-            <p>Powered by RAG & NLP</p>
-        </div>
-
-        <div class="chat-messages" id="chatMessages">
-            <div class="message bot-message">
-                Hello! I am your AI customer support assistant. How can I help you today?
-            </div>
-            
-            <div class="typing-indicator" id="typingIndicator">
-                <div class="typing-dots">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="chat-input-container">
-            <input type="text" id="userInput" class="chat-input" placeholder="Type your message here..." autocomplete="off">
-            <button class="send-btn" id="sendBtn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-            </button>
-        </div>
-    </div>
-
-    <script>
-        const chatMessages = document.getElementById('chatMessages');
-        const userInput = document.getElementById('userInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const typingIndicator = document.getElementById('typingIndicator');
-
-        function scrollToBottom() {
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function addMessage(text, isUser, metadata = null) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-            
-            if (metadata && metadata.escalated) {
-                const badge = document.createElement('span');
-                badge.className = 'escalated-badge';
-                badge.textContent = 'Human Escalation';
-                msgDiv.appendChild(badge);
-                msgDiv.appendChild(document.createElement('br'));
-            }
-
-            const textSpan = document.createElement('span');
-            textSpan.textContent = text;
-            msgDiv.appendChild(textSpan);
-
-            if (metadata) {
-                const debugSpan = document.createElement('span');
-                debugSpan.className = 'debug-info';
-                debugSpan.textContent = `[Intent: ${metadata.intent} | Sentiment: ${metadata.sentiment} | Lang: ${metadata.language}]`;
-                msgDiv.appendChild(debugSpan);
-            }
-
-            chatMessages.insertBefore(msgDiv, typingIndicator);
-            scrollToBottom();
-        }
-
-        async function handleSend() {
-            const text = userInput.value.trim();
-            if (!text) return;
-
-            // Add user message
-            addMessage(text, true);
-            userInput.value = '';
-            
-            // Show typing
-            typingIndicator.style.display = 'flex';
-            scrollToBottom();
-
-            try {
-                const response = await fetch('/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: text })
-                });
-                
-                const data = await response.json();
-                
-                // Hide typing
-                typingIndicator.style.display = 'none';
-                
-                // Add bot message
-                addMessage(data.response, false, {
-                    intent: data.intent,
-                    sentiment: data.sentiment,
-                    language: data.language,
-                    escalated: data.escalated
-                });
-
-            } catch (error) {
-                typingIndicator.style.display = 'none';
-                addMessage("Sorry, I'm having trouble connecting to the server.", false);
-            }
-        }
-
-        sendBtn.addEventListener('click', handleSend);
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                handleSend();
-            }
-        });
-    </script>
+  <main class="shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 8.2c5.1-1.5 10.4-.9 15 1.6M5.6 12.3c4.2-1.2 8.8-.8 12.6 1.3M6.8 16.1c3.3-.8 6.8-.5 9.9 1"></path></svg></div><div><div class="eyebrow">Unofficial demo</div><div class="brand-name">Spotify Support AI</div></div></div>
+      <h1>Answers that stay on track.</h1>
+      <p class="intro">Ask about your Spotify account, Premium, playback, playlists, devices, privacy, podcasts, and audiobooks. Every support answer links back to an official source.</p>
+      <div class="signal" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="suggestions" aria-label="Suggested questions"><button class="suggestion">How do I listen offline?</button><button class="suggestion">I don't recognize a charge</button><button class="suggestion">Can I recover a deleted playlist?</button><button class="suggestion">How does Premium Family work?</button></div>
+      <p class="disclaimer">Educational project. Spotify is a trademark of Spotify AB. This assistant is not affiliated with Spotify.</p>
+    </aside>
+    <section class="chat" aria-label="Spotify support chat">
+      <header class="chat-head"><div><div class="eyebrow">Source-grounded support</div><div class="chat-title">Listening help</div></div><div class="status"><span class="status-dot"></span><span id="statusText">Checking service…</span></div></header>
+      <div class="messages" id="messages" aria-live="polite"><article class="message bot"><div class="bubble">Hi — what can I help you with today? I can answer Spotify support questions and show you where the information came from.</div></article></div>
+      <footer class="composer-wrap"><form class="composer" id="chatForm"><textarea id="messageInput" rows="1" maxlength="2000" placeholder="Ask a Spotify support question…" aria-label="Message"></textarea><button class="send" id="sendButton" type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 14-7-4 14-3-6-7-1Z"></path><path d="m12 13 7-8"></path></svg></button></form><div class="hint">Enter to send · Shift + Enter for a new line · Verify important account decisions with official support</div></footer>
+    </section>
+  </main>
+  <script>
+    const form=document.querySelector('#chatForm'),input=document.querySelector('#messageInput'),messages=document.querySelector('#messages'),sendButton=document.querySelector('#sendButton'),statusText=document.querySelector('#statusText');
+    function scrollDown(){messages.scrollTop=messages.scrollHeight}
+    function addMessage(text,kind,data={}){const article=document.createElement('article');article.className=`message ${kind}`;const bubble=document.createElement('div');bubble.className='bubble';bubble.textContent=text;article.appendChild(bubble);if(kind==='bot'&&data.intent){const meta=document.createElement('div');meta.className='meta';[data.intent.replaceAll('_',' '),data.sentiment,data.language,data.grounded?'grounded':'needs human help'].forEach(value=>{const tag=document.createElement('span');tag.className='tag';tag.textContent=value;meta.appendChild(tag)});if(data.escalated){const tag=document.createElement('span');tag.className='tag escalated';tag.textContent='priority';meta.appendChild(tag)}article.appendChild(meta)}if(data.sources?.length){const box=document.createElement('div');box.className='sources';const label=document.createElement('div');label.className='sources-label';label.textContent='Official Spotify sources';box.appendChild(label);data.sources.forEach(source=>{const link=document.createElement('a');link.href=source.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent=`↗ ${source.title}`;box.appendChild(link)});article.appendChild(box)}messages.appendChild(article);scrollDown();return article}
+    function showTyping(){const article=document.createElement('article');article.className='message bot typing';article.id='typing';article.innerHTML='<div class="bubble"><i></i><i></i><i></i></div>';messages.appendChild(article);scrollDown()}
+    async function sendMessage(text){addMessage(text,'user');showTyping();sendButton.disabled=true;try{const response=await fetch('/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text})});const data=await response.json();if(!response.ok)throw new Error(data.detail||'The service could not answer.');document.querySelector('#typing')?.remove();addMessage(data.response,'bot',data)}catch(error){document.querySelector('#typing')?.remove();addMessage(`${error.message} Check that the FastAPI server is running, then try again.`,'bot')}finally{sendButton.disabled=false;input.focus()}}
+    form.addEventListener('submit',event=>{event.preventDefault();const text=input.value.trim();if(!text)return;input.value='';input.style.height='auto';sendMessage(text)});input.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();form.requestSubmit()}});input.addEventListener('input',()=>{input.style.height='auto';input.style.height=`${Math.min(input.scrollHeight,130)}px`});document.querySelectorAll('.suggestion').forEach(button=>button.addEventListener('click',()=>{input.value=button.textContent;form.requestSubmit()}));fetch('/health').then(r=>r.json()).then(data=>{statusText.textContent=`${data.knowledge_entries} verified topics · ${data.llm_backend}`}).catch(()=>{statusText.textContent='Service unavailable'});
+  </script>
 </body>
 </html>
