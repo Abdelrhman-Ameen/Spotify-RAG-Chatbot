@@ -66,3 +66,28 @@ def test_subscribe_question_returns_basic_support_answer():
     assert result["grounded"] is True
     assert "Premium" in result["response"]
     assert result["sources"]
+
+
+def test_why_buy_spotify_returns_benefits_not_checkout_steps():
+    result = build_assistant().chat("Why do I buy Spotify?")
+    assert result["intent"] == "premium_benefits"
+    assert "ad-free" in result["response"]
+    assert result["sources"][0]["title"] == "Spotify Premium benefits"
+
+
+def test_ambiguous_follow_up_uses_previous_user_question():
+    history = [
+        {"role": "user", "content": "Why do I buy Spotify?"},
+        {"role": "assistant", "content": "Premium includes ad-free listening."},
+    ]
+    result = build_assistant().chat("Why do I do that?", history=history)
+    assert result["intent"] == "premium_benefits"
+    assert "ad-free" in result["response"]
+    assert result["grounded"] is True
+
+
+def test_price_question_uses_regional_pricing_topic():
+    result = build_assistant().chat("What is the price of Spotify price?")
+    assert result["intent"] == "premium_pricing"
+    assert "country or region" in result["response"]
+    assert result["sources"][0]["title"] == "Spotify Premium prices"

@@ -4,8 +4,8 @@
   "disclaimer": "Educational project. Spotify is a trademark of Spotify AB. This project is not affiliated with Spotify.",
   "entries": [
     {
-      "id": "premium-benefits", "category": "premium_plans", "title": "Spotify Premium benefits",
-      "questions": ["What do I get with Premium?", "Is Premium ad free?", "Can Premium download music?"],
+      "id": "premium-benefits", "category": "premium_benefits", "title": "Spotify Premium benefits",
+      "questions": ["What do I get with Premium?", "Is Premium ad free?", "Can Premium download music?", "Why should I buy Spotify Premium?", "Why is Premium worth it?"],
       "answer": "Spotify Premium includes ad-free music, offline music downloads, on-demand playback and high audio quality. Eligible Premium users can download up to 10,000 tracks on each of up to 5 devices. Feature and audiobook availability can vary by plan and market.",
       "source_url": "https://support.spotify.com/us/article/your-premium-benefits/"
     },
@@ -182,6 +182,12 @@
       "questions": ["Does Premium include audiobooks?", "Who gets audiobook hours?", "Can I buy more audiobook time?"],
       "answer": "Audiobook access, included monthly listening time and top-ups depend on plan and market. For Family and Duo, included listening time is generally assigned to the plan manager; eligible members may use an Audiobooks+ add-on or purchased time where offered. Check the account plan page for current eligibility.",
       "source_url": "https://support.spotify.com/us/article/audiobooks-premium-plans/"
+    },
+    {
+      "id": "premium-pricing", "category": "premium_pricing", "title": "Spotify Premium prices",
+      "questions": ["What is the price of Spotify?", "How much does Spotify Premium cost?", "What are the Premium plan prices?", "Spotify price"],
+      "answer": "Spotify Premium prices depend on your country or region and the plan you choose, such as Individual, Student, Duo or Family. Visit spotify.com/premium to see the current plans, local prices, taxes and any eligible trial offers for your market before subscribing.",
+      "source_url": "https://www.spotify.com/premium/"
     },
     {
       "id": "subscribe-premium", "category": "premium_plans", "title": "Subscribe to Spotify Premium",

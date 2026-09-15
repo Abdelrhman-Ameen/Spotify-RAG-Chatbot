@@ -25,3 +25,16 @@ def test_health_and_chat_contract():
 def test_chat_validation():
     with TestClient(app) as client:
         assert client.post("/chat", json={"message": ""}).status_code == 422
+
+
+def test_chat_accepts_history_for_follow_up_questions():
+    with TestClient(app) as client:
+        response = client.post("/chat", json={
+            "message": "Why do I do that?",
+            "history": [
+                {"role": "user", "content": "Why should I buy Spotify Premium?"},
+                {"role": "assistant", "content": "Premium offers additional listening benefits."},
+            ],
+        })
+        assert response.status_code == 200
+        assert response.json()["intent"] == "premium_benefits"

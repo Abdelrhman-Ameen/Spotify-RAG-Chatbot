@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+
 from .llm import OpenSourceGenerator
 from .nlp import SentimentClassifier, detect_intent, detect_language
 from .retrieval import SpotifyRetriever
@@ -31,12 +33,13 @@ class SpotifyAssistant:
         self.sentiment_classifier.initialize()
         self.generator.initialize()
 
-    def chat(self, message: str, top_k: int = 4) -> dict:
+    def chat(self, message: str, top_k: int = 4, history: list[dict] | None = None) -> dict:
         if not message:
             raise ValueError("Message cannot be empty")
-        sentiment = self.sentiment_classifier.predict(message)
+        contextual_message = self._contextualize(message, history or [])
+        sentiment = self.sentiment_classifier.predict(contextual_message)
         language = detect_language(message)
-        intent = detect_intent(message)
+        intent = detect_intent(contextual_message)
         if intent in SMALL_TALK:
             return {
                 "response": SMALL_TALK[intent], "language": language,
@@ -50,14 +53,15 @@ class SpotifyAssistant:
                 "grounded": True, "sources": [],
             }
 
-        documents = self.retriever.search(message, top_k)
+        category = intent if intent in {"premium_benefits", "premium_pricing"} else None
+        documents = self.retriever.search(contextual_message, top_k, category=category)
         threshold = self.settings.relevance_threshold
         if self.retriever.backend_name.startswith("tfidf"):
             threshold = min(threshold, 0.10)
         relevant = [doc for doc in documents if doc.relevance >= threshold]
         escalated = intent in {"complaint", "account_security"} or sentiment == "negative"
         if relevant:
-            response = self.generator.generate(message, relevant, sentiment, language)
+            response = self.generator.generate(contextual_message, relevant, sentiment, language)
             grounded = True
         else:
             response = (
@@ -73,3 +77,20 @@ class SpotifyAssistant:
                 "title": doc.title, "url": doc.url, "relevance": round(doc.relevance, 3)
             } for doc in relevant[:3]],
         }
+
+    @staticmethod
+    def _contextualize(message: str, history: list[dict]) -> str:
+        normalized = " ".join(message.lower().split())
+        follow_up = bool(re.search(
+            r"\b(that|it|this|those|them)\b|^(why|how|what about|and why|and how)\??$",
+            normalized,
+        ))
+        if not follow_up:
+            return message
+        previous_user = next(
+            (turn.get("content", "") for turn in reversed(history) if turn.get("role") == "user"),
+            "",
+        )
+        if not previous_user:
+            return message
+        return f"Previous customer question: {previous_user}. Follow-up: {message}"

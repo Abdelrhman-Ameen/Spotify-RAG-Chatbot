@@ -90,12 +90,15 @@ class SpotifyRetriever:
         self._tfidf = TfidfVectorizer(ngram_range=(1, 2), stop_words="english")
         self._matrix = self._tfidf.fit_transform(entry_document(entry) for entry in self.entries)
 
-    def search(self, query: str, top_k: int = 4) -> list[RetrievedDocument]:
+    def search(self, query: str, top_k: int = 4, category: str | None = None) -> list[RetrievedDocument]:
         if self._collection is not None:
-            result = self._collection.query(
-                query_texts=[query], n_results=min(top_k, self.count),
-                include=["metadatas", "distances"],
-            )
+            query_args = {
+                "query_texts": [query], "n_results": min(top_k, self.count),
+                "include": ["metadatas", "distances"],
+            }
+            if category:
+                query_args["where"] = {"category": category}
+            result = self._collection.query(**query_args)
             return [RetrievedDocument(
                 id=doc_id, title=metadata["title"], answer=metadata["answer"],
                 url=metadata["url"], category=metadata["category"],
@@ -108,7 +111,10 @@ class SpotifyRetriever:
         from sklearn.metrics.pairwise import cosine_similarity
 
         scores = cosine_similarity(self._tfidf.transform([query]), self._matrix)[0]
-        indices = scores.argsort()[::-1][:top_k]
+        ranked = scores.argsort()[::-1]
+        if category:
+            ranked = [index for index in ranked if self.entries[index]["category"] == category]
+        indices = ranked[:top_k]
         return [RetrievedDocument(
             id=self.entries[index]["id"], title=self.entries[index]["title"],
             answer=self.entries[index]["answer"], url=self.entries[index]["source_url"],

@@ -2,6 +2,7 @@
 
 from contextlib import asynccontextmanager
 from pathlib import Path
+from typing import Literal
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
@@ -14,9 +15,15 @@ from spotify_rag.config import Settings
 BASE_DIR = Path(__file__).resolve().parent
 
 
+class ChatTurn(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str = Field(min_length=1, max_length=4000)
+
+
 class ChatRequest(BaseModel):
     message: str = Field(min_length=1, max_length=2000)
     top_k: int = Field(default=4, ge=1, le=8)
+    history: list[ChatTurn] = Field(default_factory=list, max_length=10)
 
 
 class Source(BaseModel):
@@ -73,7 +80,8 @@ async def health() -> dict:
 @app.post("/chat", response_model=ChatResponse)
 async def chat_endpoint(request: ChatRequest) -> ChatResponse:
     try:
-        return ChatResponse(**app.state.assistant.chat(request.message.strip(), request.top_k))
+        history = [turn.model_dump() for turn in request.history]
+        return ChatResponse(**app.state.assistant.chat(request.message.strip(), request.top_k, history))
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     except Exception as exc:

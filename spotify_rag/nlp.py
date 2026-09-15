@@ -26,6 +26,8 @@ INTENT_PATTERNS = [
     ("account_security", ("hacked", "someone accessed", "stolen account", "sign out everywhere")),
     ("account_management", ("password", "log in", "login", "email address", "delete account", "username")),
     ("billing_and_refunds", ("charged", "payment", "billing", "invoice", "receipt", "refund", "gift card")),
+    ("premium_pricing", ("price of spotify", "spotify price", "how much is spotify", "how much does spotify", "premium cost", "cost of spotify", "price of premium", "premium price")),
+    ("premium_benefits", ("why buy spotify", "why do i buy spotify", "why would i buy spotify", "why should i buy spotify", "why get premium", "why should i get premium", "is premium worth", "premium benefits", "benefits of premium", "what do i get with premium")),
     ("premium_plans", ("premium", "family plan", "duo", "student plan", "subscription", "cancel plan")),
     ("playback", ("not playing", "no sound", "buffer", "offline", "download", "audio quality", "lossless")),
     ("playlists_and_library", ("playlist", "library", "liked songs", "recover playlist", "collaborative")),

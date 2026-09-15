@@ -6,12 +6,13 @@ A complete, local Retrieval-Augmented Generation (RAG) customer-support chatbot 
 
 ## What is included
 
-- **Spotify knowledge base:** 35 support topics covering onboarding, Premium, billing, accounts, security, playback, downloads, playlists, devices, privacy, creators, podcasts, and audiobooks.
+- **Spotify knowledge base:** 36 support topics covering onboarding, Premium benefits and regional pricing, billing, accounts, security, playback, downloads, playlists, devices, privacy, creators, podcasts, and audiobooks.
 - **Semantic RAG:** ChromaDB and multilingual sentence-transformer embeddings. The index is created automatically on first startup.
 - **Open-source LLM:** local `google/flan-t5-small` through Hugging Face Transformers by default. Ollama with `qwen2.5:3b` is also supported.
 - **Grounding controls:** relevance threshold, explicit refusal when context is weak, deterministic generation, and official citations.
 - **Transformer opinion routing:** CardiffNLP RoBERTa classifies positive, neutral, and negative sentiment before intent routing; opinions receive a conversational response without unnecessary retrieval.
 - **Integrated NLP routing:** language detection, trained Spotify intent classification, small-talk/opinion bypass, and priority flags for negative/security messages.
+- **Conversation context:** the API accepts recent user/assistant turns so short follow-ups such as “Why do I do that?” resolve against the preceding question.
 - **FastAPI:** typed `/chat` and `/health` endpoints plus interactive OpenAPI docs at `/docs`.
 - **Responsive UI:** Spotify-inspired desktop/mobile chat, suggested questions, status metadata, typing feedback, and clickable sources.
 - **Tests and Docker:** deterministic tests use TF-IDF retrieval and an extractive generator so CI does not download models.
