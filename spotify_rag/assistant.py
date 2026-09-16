@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 
 from .llm import OpenSourceGenerator
-from .nlp import SentimentClassifier, detect_intent, detect_language
+from .nlp import SentimentClassifier, detect_explicit_intent, detect_intent, detect_language
 from .retrieval import SpotifyRetriever
 
 SMALL_TALK = {
@@ -39,7 +39,8 @@ class SpotifyAssistant:
         contextual_message = self._contextualize(message, history or [])
         sentiment = self.sentiment_classifier.predict(contextual_message)
         language = detect_language(message)
-        intent = detect_intent(contextual_message)
+        explicit_intent = detect_explicit_intent(contextual_message)
+        intent = explicit_intent or detect_intent(contextual_message)
         if intent in SMALL_TALK:
             return {
                 "response": SMALL_TALK[intent], "language": language,
@@ -53,13 +54,59 @@ class SpotifyAssistant:
                 "grounded": True, "sources": [],
             }
 
-        category = intent if intent in {"premium_benefits", "premium_pricing"} else None
+        category_filters = {
+            "account_management": "account_management",
+            "account_security": "account_security",
+            "login_help": "login_help",
+            "billing_and_refunds": "billing",
+            "refund_request": "refunds",
+            "duplicate_charge": "duplicate_charge",
+            "canceled_but_charged": "canceled_charge",
+            "unknown_charge": "unknown_charge",
+            "payment_details": "payment_details",
+            "failed_payment": "failed_payment",
+            "cancel_premium": "cancel_premium",
+            "family_plan": "family_plan",
+            "duo_plan": "duo_plan",
+            "student_plan": "student_plan",
+            "basic_plan": "basic_plan",
+            "contact_support": "contact_support",
+            "data_usage": "data_usage",
+            "premium_benefits": "premium_benefits",
+            "premium_pricing": "premium_pricing",
+            "premium_subscription": "premium_subscription",
+            "spotify_basics": "spotify_basics",
+            "offline_listening": "offline_listening",
+            "audio_quality": "audio_quality",
+            "lossless_audio": "lossless_audio",
+            "connection_issue": "connection_issue",
+            "playback_issue": "playback_issue",
+            "no_sound": "no_sound",
+            "storage_help": "storage_help",
+            "reset_password": "reset_password",
+            "delete_account": "delete_account",
+            "playlist_recovery": "playlist_recovery",
+            "collaborative_playlist": "collaborative_playlist",
+            "spotify_connect": "spotify_connect",
+            "private_listening": "private_listening",
+            "privacy_data": "privacy_data",
+        }
+        # Hard category filters are safe only for an explicit phrase match. A
+        # statistical fallback prediction still searches the full knowledge base.
+        category = category_filters.get(intent) if explicit_intent else None
         documents = self.retriever.search(contextual_message, top_k, category=category)
         threshold = self.settings.relevance_threshold
         if self.retriever.backend_name.startswith("tfidf"):
             threshold = min(threshold, 0.10)
+        if category:
+            # An explicit intent route is already a high-confidence semantic match.
+            # The category itself may contain vocabulary absent from a short user query.
+            threshold = 0.0
         relevant = [doc for doc in documents if doc.relevance >= threshold]
-        escalated = intent in {"complaint", "account_security"} or sentiment == "negative"
+        escalated = intent in {
+            "complaint", "account_security", "refund_request",
+            "duplicate_charge", "canceled_but_charged",
+        } or sentiment == "negative"
         if relevant:
             response = self.generator.generate(contextual_message, relevant, sentiment, language)
             grounded = True

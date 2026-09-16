@@ -120,9 +120,12 @@ Reports the knowledge-entry count, retrieval backend, LLM backend, and whether t
 
 ```bash
 pytest -q
+python scripts/evaluate_100_queries.py
 ```
 
 Tests intentionally set `RAG_RETRIEVAL_BACKEND=tfidf` and `LLM_BACKEND=extractive`. This verifies routing, retrieval, citations, refusal behavior, and the FastAPI contract without network access or multi-gigabyte model downloads.
+
+The 100-query evaluation is a separate adversarial regression set. Its prompts were written independently from the knowledge-base examples and include shorthand, misspellings, emotional billing requests, vague follow-ups, and topic switches. This prevents a misleading score based on replaying the same questions used to build the index.
 
 ## Project structure
 
@@ -137,6 +140,7 @@ spotify_rag/
 data/spotify_knowledge_base.json
 static/index.html              Responsive chatbot UI
 tests/                         Unit and API tests
+scripts/evaluate_100_queries.py Independent human-style support evaluation
 1_language_detection.ipynb     Assignment language-model notebook
 2_sentiment_classifier.ipynb   Assignment sentiment-model notebook
 3_intent_classifier.ipynb      Intent-model training notebook

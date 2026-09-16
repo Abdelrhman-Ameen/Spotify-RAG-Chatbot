@@ -26,7 +26,7 @@ def build_assistant() -> SpotifyAssistant:
 def test_offline_answer_is_grounded_and_cited():
     result = build_assistant().chat("How many songs can I download for offline listening?")
     assert result["grounded"] is True
-    assert result["intent"] == "playback"
+    assert result["intent"] == "offline_listening"
     assert "10,000" in result["response"]
     assert result["sources"][0]["url"].startswith("https://support.spotify.com/")
 

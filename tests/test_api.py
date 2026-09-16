@@ -17,7 +17,7 @@ def test_health_and_chat_contract():
         response = client.post("/chat", json={"message": "How do I cancel Premium?"})
         assert response.status_code == 200
         body = response.json()
-        assert body["intent"] == "premium_plans"
+        assert body["intent"] == "cancel_premium"
         assert body["grounded"] is True
         assert body["sources"]
 
